@@ -12,7 +12,7 @@
       <th class="table-cell">{{ video.id }}</th>
       <th class="table-cell">{{ video.name }}</th>
       <th class="table-cell">{{ video.url }}</th>
-      <th class="table-cell">X</th>
+      <th class="table-cell" @click="deleteVideo(video)">X</th>
     </tr>
   </table>
 </template>
@@ -23,6 +23,12 @@ export default {
     videos: {
       type: Array,
       required: true,
+    },
+  },
+  methods: {
+    deleteVideo(video) {
+      this.$emit("deleteVideo", video);
+      console.log(video);
     },
   },
 };

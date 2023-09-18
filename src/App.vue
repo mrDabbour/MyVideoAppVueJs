@@ -1,10 +1,10 @@
 <template>
   <div>
-    <h1>Welcome in my project "My videos app"</h1>
+    <!-- <h1>Welcome in my project "My videos app"</h1> -->
     <videos-form @addVideo="addVideo"></videos-form>
     <!-- <div v-for="video in videos" :key="video.url">{{ video.name }} - {{ video.url }}</div>
     {{ videos }} -->
-    <videos-table :videos="videos"></videos-table>
+    <videos-table @deleteVideo="deleteVideo" :videos="videos"></videos-table>
   </div>
 </template>
 
@@ -22,7 +22,19 @@ export default {
       videos: [
         {
           name: "Learn VueJs",
-          url: "www.vuejs.com",
+          url: "www.Vuejs.com",
+        },
+        {
+          name: "Learn Angular",
+          url: "www.Angular.com",
+        },
+        {
+          name: "Learn NodeJs",
+          url: "www.NodeJs.com",
+        },
+        {
+          name: "Learn ReactJs",
+          url: "www.ReactJs.com",
         },
       ],
     };
@@ -35,6 +47,12 @@ export default {
         name: name,
         url: url,
       });
+    },
+    deleteVideo(video) {
+      console.log(video);
+      this.videos = this.videos.filter(
+        (v) => v.name !== video.name && v.url !== video.url
+      );
     },
   },
 };
