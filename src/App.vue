@@ -1,21 +1,30 @@
 <template>
   <div>
-    <!-- <h1>Welcome in my project "My videos app"</h1> -->
     <videos-form @addVideo="addVideo"></videos-form>
-    <!-- <div v-for="video in videos" :key="video.url">{{ video.name }} - {{ video.url }}</div>
-    {{ videos }} -->
-    <videos-table @deleteVideo="deleteVideo" :videos="videos"></videos-table>
+    <page-section title="My Videos">
+      <template v-slot:content>
+        <videos-table @deleteVideo="deleteVideo" :videos="videos"></videos-table>
+      </template>
+      <template v-slot:controls>
+        <VideosControl></VideosControl>
+        <!-- Corrected component name -->
+      </template>
+    </page-section>
   </div>
 </template>
-
 <script>
 import VideosForm from "./components/VideosForm.vue";
 import VideosTable from "./components/VideosTable.vue";
+import VideosControl from "./components/VideosControl.vue";
+import PageSection from "./components/PageSection.vue";
+
 export default {
   name: "App",
   components: {
     VideosForm,
     VideosTable,
+    PageSection,
+    VideosControl,
   },
   data() {
     return {

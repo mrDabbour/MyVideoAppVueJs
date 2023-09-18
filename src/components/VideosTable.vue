@@ -1,6 +1,4 @@
 <template>
-  <h1>Videos Table Page</h1>
-
   <table class="table">
     <tr class="table-headRow">
       <th class="table-headCell">Id</th>
