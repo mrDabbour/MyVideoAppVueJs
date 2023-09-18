@@ -1,17 +1,41 @@
 <template>
-  <h1>Welcome in my project "My videos app"</h1>
-  <videos-form @addVideo="addVideo"></videos-form>
+  <div>
+    <h1>Welcome in my project "My videos app"</h1>
+    <videos-form @addVideo="addVideo"></videos-form>
+    <!-- <div v-for="video in videos" :key="video.url">{{ video.name }} - {{ video.url }}</div>
+    {{ videos }} -->
+    <videos-table :videos="videos"></videos-table>
+  </div>
 </template>
 
 <script>
-import videosForm from "./components/videosForm.vue";
+import VideosForm from "./components/VideosForm.vue";
+import VideosTable from "./components/VideosTable.vue";
 export default {
   name: "App",
   components: {
-    videosForm,
+    VideosForm,
+    VideosTable,
+  },
+  data() {
+    return {
+      videos: [
+        {
+          name: "Learn VueJs",
+          url: "www.vuejs.com",
+        },
+      ],
+    };
   },
   methods: {
-    addVideo() {},
+    addVideo(payload) {
+      const { name, url } = payload;
+      console.log(name, url);
+      this.videos.push({
+        name: name,
+        url: url,
+      });
+    },
   },
 };
 </script>
